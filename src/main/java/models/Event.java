@@ -1,11 +1,14 @@
 package models;
 
-public class Event extends Task {
-    private String date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-    public Event(String taskName, String date) {
+public class Event extends Task {
+    private LocalDateTime datetime;
+
+    public Event(String taskName, LocalDateTime datetime) {
         super(taskName);
-        this.date = date;
+        this.datetime = datetime;
     }
 
     public String getDate() {
@@ -14,6 +17,6 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (at: " + date + ")";
+        return "[E]" + super.toString() + " (at: " + datetime.format(DateTimeFormatter.ofPattern("MMM d yyyy HH:mm")) + ")";
     }
 }
